@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Available Rooms</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='rooms.css') }}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+</head>
+
+<body>
+    <header class="hero-banner">
+        <div class="hero-content">
+            <h1>Available Rooms</h1>
+            <p>Select a room to view its details or send a message.</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <h2>Room List</h2>
+        <form method="POST">
+            <div class="room-list">
+                {% for room in rooms %}
+                <div class="room-card">
+                    <div class="room-header">
+                        <h3>
+                            <input type="radio" name="room_id" value="{{ room['id'] }}" id="room-{{ room['id'] }}">
+                            <label for="room-{{ room['id'] }}"><i class="fas fa-door-open"></i> {{ room['title'] }}</label>
+                        </h3>
+                        <button class="toggle-details" type="button" onclick="toggleDetails('{{ room.id }}')">
+                            <i class="fas fa-chevron-down"></i> <span class="toggle-text">Expand</span>
+                        </button>
+                    </div>
+                    <div class="room-details" id="details-{{ room['id'] }}">
+                        <p>
+                            <strong><i class="fas fa-key"></i> Room ID:</strong> {{ room['id'][:10] }}...
+                            <span class="tooltip">(Hover for full ID)</span>
+                        </p>
+                        <p class="full-id">{{ room['id'] }}</p>
+                        <p>
+                            <strong><i class="fas fa-calendar-alt"></i> Date Created:</strong> {{ room['created'] | format_date }}
+                        </p>
+                        <p>
+                            <strong><i class="fas fa-history"></i> Last Activity:</strong>
+                            {{ room['lastActivity'] | format_date if room['lastActivity'] else 'No recent activity' }}
+                        </p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            
+            <div class="message-container">
+                <label for="message"><i class="fas fa-comment"></i> Message:</label>
+                <textarea id="message" name="message" rows="3" placeholder="Type your message here..." required></textarea>
+            </div>
+
+            <div class="button-container">
+                <button type="submit" class="button-link"><i class="fas fa-paper-plane"></i> Send Message</button>
+                <a class="button-link" href="{{ url_for('menu', access_token=access_token) }}"><i class="fas fa-arrow-left"></i> Back to Menu</a>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function toggleDetails(roomId) {
+            const details = document.getElementById(`details-${roomId}`);
+            const isVisible = details.style.display === "block";
+            details.style.display = isVisible ? "none" : "block";
+
+            const toggleButton = document.querySelector(`button[onclick="toggleDetails('${roomId}')"]`);
+            const toggleIcon = toggleButton.querySelector('.fas');
+            const toggleText = toggleButton.querySelector('.toggle-text');
+
+            if (isVisible) {
+                toggleIcon.classList.remove('fa-chevron-up');
+                toggleIcon.classList.add('fa-chevron-down');
+                toggleText.textContent = 'Expand';
+            } else {
+                toggleIcon.classList.remove('fa-chevron-down');
+                toggleIcon.classList.add('fa-chevron-up');
+                toggleText.textContent = 'Collapse';
+            }
+        }
+    </script>
+</body>
+
+</html>

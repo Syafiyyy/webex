@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Information</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='user_info.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="hero-banner">
+        <div class="hero-content">
+            <h1>Your Webex Profile</h1>
+            <p>Here is the information associated with your Webex account. Your data is private and handled securely.</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <h2>User Information</h2>
+        
+        <div class="user-card">
+            <div class="avatar-container">
+                <img src="{{ url_for('static', filename='photo/avatar.jpg') }}" alt="Avatar">
+            </div>
+            <p><strong><i class="fas fa-user"></i> Display Name:</strong> {{ display_name }}</p>
+            <p><strong><i class="fas fa-envelope"></i> Email:</strong> {{ user_email }}
+                <button class="copy-button" onclick="copyToClipboard('{{ user_email }}')"><i class="fas fa-copy"></i> Copy</button>
+            </p>
+            {% if job_title %}
+            <p><strong><i class="fas fa-briefcase"></i> Job Title:</strong> {{ job_title }}</p>
+            {% endif %}
+            {% if phone_number %}
+            <p><strong><i class="fas fa-phone"></i> Phone Number:</strong> {{ phone_number }}</p>
+            {% endif %}
+            {% if company %}
+            <p><strong><i class="fas fa-building"></i> Company:</strong> {{ company }}</p>
+            {% endif %}
+            {% if location %}
+            <p><strong><i class="fas fa-map-marker-alt"></i> Location:</strong> {{ location }}</p>
+            {% endif %}
+            {% if website %}
+            <p><strong><i class="fas fa-globe"></i> Website:</strong> <a href="{{ website }}" target="_blank">{{ website }}</a></p>
+            {% endif %}
+        </div>
+
+        <div class="button-container">
+            <a class="button-link" href="{{ url_for('menu', access_token=access_token) }}"><i class="fas fa-arrow-left"></i>Back to Menu</a>
+            <button class="edit-button" onclick="editProfile()"><i class="fas fa-edit"></i> Edit Profile</button>
+        </div>
+
+        <div class="profile-completion">
+            <label for="completion-bar">Profile Completion:</label>
+            <progress id="completion-bar" value="70" max="100"></progress>
+        </div>
+    </div>
+
+    <script>
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(function() {
+                alert('Email copied to clipboard!');
+            }, function(err) {
+                console.error('Could not copy text: ', err);
+            });
+        }
+
+        function editProfile() {
+            alert('Edit Profile feature is coming soon!');
+        }
+
+        window.onload = function() {
+            document.body.classList.add('fade-in');
+        }
+    </script>
+</body>
+</html>

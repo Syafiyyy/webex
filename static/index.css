@@ -1,0 +1,168 @@
+/* General styling for the body and container */
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #e0f7fa, #f0f4f8);
+    color: #333;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+/* Hero Banner Styling */
+.hero-banner {
+    width: 100%;
+    background: linear-gradient(135deg, #4caf50, #2e7d32);
+    color: white;
+    padding: 30px 15px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: -20px 0 30px 0; /* Negative top margin */
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin: 0;
+}
+
+.hero-content p {
+    font-size: 1.3rem;
+    margin-top: 15px;
+}
+
+.container {
+    width: 50%;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+.container:hover {
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.4);
+    transform: translateY(-5px);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+h2 {
+    font-size: 2.5rem;
+    color: #2b3a42;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+label {
+    margin-top: 15px;
+    color: #2b3a42;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+input[type="text"] {
+    padding: 15px;
+    width: 100%;
+    max-width: 450px;
+    margin-top: 10px;
+    border: 1px solid #b0bec5;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="text"]:focus {
+    border-color: #4caf50;
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.6);
+    outline: none;
+}
+
+button {
+    margin-top: 20px;
+    padding: 12px 25px;
+    font-size: 16px;
+    background: linear-gradient(135deg, #4caf50, #2e7d32);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #66bb6a, #388e3c);
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(56, 142, 60, 0.2);
+}
+
+button:active {
+    transform: scale(1);
+    box-shadow: 0 4px 8px rgba(56, 142, 60, 0.2);
+}
+
+/* Loader Styling */
+#loader {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 6px solid #f3f3f3;
+    border-top: 6px solid #4caf50;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    button {
+        font-size: 14px;
+    }
+}

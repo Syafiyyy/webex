@@ -1,0 +1,154 @@
+/* General styling for the body and container */
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #e0f7fa, #f0f4f8);
+    color: #333;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Hero Banner Styling */
+.hero-banner {
+    width: 100%;
+    background: linear-gradient(135deg, #4caf50, #2e7d32);
+    color: white;
+    padding: 30px 15px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: -20px 0 30px 0;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin: 0;
+}
+
+.hero-content p {
+    font-size: 1.3rem;
+    margin-top: 15px;
+}
+
+.container {
+    width: 50%;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    animation: fadeIn 1.2s ease-in-out;
+    text-align: center;
+}
+
+.container:hover {
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.4);
+    transform: translateY(-5px);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Status Card Styling */
+.status-card {
+    background: #e8f5e9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.status-card:hover {
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+}
+
+.status-icon {
+    font-size: 3rem;
+    color: #4caf50;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 2.5rem;
+    color: #2b3a42;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Styling for the status text */
+.status-active {
+    color: #4caf50; /* Green color for Active status */
+    font-weight: bold;
+}
+
+/* Button Container */
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+/* Button Styles */
+.button-link {
+    display: inline-block;
+    padding: 12px 25px;
+    font-size: 16px;
+    background: linear-gradient(135deg, #4caf50, #2e7d32);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.button-link:hover {
+    background: linear-gradient(135deg, #66bb6a, #388e3c);
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(56, 142, 60, 0.3);
+}
+
+.button-link:active {
+    transform: scale(1);
+    box-shadow: 0 4px 8px rgba(56, 142, 60, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+
+    .button-link {
+        font-size: 1rem;
+    }
+}

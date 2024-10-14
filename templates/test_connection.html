@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Connection</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='test_connection.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="hero-banner">
+        <div class="hero-content">
+            <h1>Connection Status</h1>
+            <p>Below is the status of your Webex connection.</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="status-card">
+            <i class="fas fa-check-circle status-icon"></i>
+            <h2>{{ message }}</h2>
+            <p><strong>Status:</strong> <span class="status-active">Active</span></p>
+        </div>
+        <div class="button-container">
+            <a class="button-link" href="{{ url_for('menu', access_token=access_token) }}"><i class="fas fa-arrow-left"></i>Back to Menu</a>
+            <a class="button-link retry-button" href="{{ url_for('test_connection', access_token=access_token) }}"><i class="fas fa-redo"></i> Retry Connection</a>
+        </div>
+    </div>
+
+    <script>
+        window.onload = function() {
+            document.body.classList.add('fade-in');
+        }
+    </script>
+</body>
+</html>

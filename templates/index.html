@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enter Webex Token</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="hero-banner">
+        <div class="hero-content">
+            <h1>Welcome to Your Webex Dashboard</h1>
+            <p>Access your Webex services easily with your personal token. Let’s get started!</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <h2>Enter Your Webex Token</h2>
+        <form action="/" method="POST">
+            <label for="access_token">Webex Token: <i class="fas fa-info-circle" title="Enter the Webex Token provided to you."></i></label>
+            <input type="text" id="access_token" name="access_token" placeholder="Enter your token here..." required>
+            <button type="submit"><i class="fas fa-arrow-right"></i> Submit</button>
+        </form>
+    </div>
+
+    <div id="loader" class="loader" style="display: none;">
+        <div class="spinner"></div>
+        <p>Processing your request...</p>
+    </div>
+
+    <script>
+        const form = document.querySelector('form');
+        form.addEventListener('submit', function() {
+            document.getElementById('loader').style.display = 'block';
+        });
+    </script>
+</body>
+</html>

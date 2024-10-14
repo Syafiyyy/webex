@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Message Confirmation</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='massage.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="hero-banner">
+        <div class="hero-content">
+            <h1>Message Sent</h1>
+            <p>Your message has been successfully sent to the selected room.</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <h2>Message Details</h2>
+        <div class="message-card">
+            <div class="message-details">
+                <p><strong>Room:</strong> {{ room_title }}</p>
+                <div class="chat-bubble">
+                    <p>{{ user_message }}</p>
+                    <p class="timestamp">Sent{{ timestamp }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="button-container">
+            <a class="button-link" href="{{ url_for('rooms', access_token=access_token) }}"><i class="fas fa-arrow-left"></i> Back to Rooms</a>
+            <a class="button-link" href="{{ url_for('menu', access_token=access_token) }}"><i class="fas fa-home"></i> Back to Menu</a>
+        </div>
+    </div>
+</body>
+</html>
